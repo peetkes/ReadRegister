@@ -1,0 +1,33 @@
+https://registers.esma.europa.eu/solr/esma_registers_mifid_sha/select?
+q=({!parent%20which=%27type_s:parent%27})
+&fq=
+(
+    (
+        (
+            (sha_modificationDate:[*%20TO%20date_valueT23:59:59.000Z])
+            %20AND%20
+            (sha_modificationBDate:[date_valueT00:00:00.000Z%20TO%20*])
+            %20AND%20
+            !sha_status:Not\%20effective\%20yet
+        )%20OR%20
+        (
+            (sha_modificationDate:[*%20TO%20date_valueT23:59:59.000Z])
+            %20AND%20
+            (sha_modificationBDate:[NOW%20TO%20*])
+            %20AND%20
+            (sha_modificationDate:[*%20TO%20date_valueT23:59:59.000Z])
+            %20AND%20
+            (sha_modificationBDate:[date_valueT00:00:00.000Z%20TO%20*])
+            %20AND%20
+            sha_status:Not\%20effective\%20yet
+        )
+    )
+)
+%20AND%20
+(sha_countryCode:country_code_value)
+&wt=xml
+&indent=true
+&rows=100000
+
+https://registers.esma.europa.eu/solr/esma_registers_mifid_sha/select?q=({!parent%20which=%27type_s:parent%27})&wt=xml&indent=true&rows=100
+
